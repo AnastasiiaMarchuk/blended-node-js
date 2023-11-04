@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "title": "Buy groceries",
+    "completed": false
+  },
+  {
+    "id": "2",
+    "title": "Read text",
+    "completed": false
+  },
+  {
+    "id": "3",
+    "title": "Finish project",
+    "completed": true
+  },
+  {
+    "id": "462b5eb7-1939-45b2-bfc9-34b090d133be"
+  },
+  {
+    "id": "47b4d9ec-671e-455f-ae31-d41b3673570e"
+  }
+]
