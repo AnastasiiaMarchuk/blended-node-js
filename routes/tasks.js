@@ -1,13 +1,28 @@
-const express = require('express');
-const { getAllTasks, getOneTask, createTask, updateTask, deleteTask } = require('../controllers/tasks.controller');
-
+const express = require("express");
+const {
+  getAllTasks,
+  getOneTask,
+  createTask,
+  updateTask,
+  deleteTask,
+} = require("../controllers/tasks.controller");
+const validateBody = require("../utils/validateBody");
+const {
+  createTaskValidationSchema,
+  updateTaskValidationSchema,
+} = require("../utils/validation/tasksValidationSchemas");
 
 const router = express.Router();
 
-router.get('/', getAllTasks);
-router.get('/:id', getOneTask);
-router.post('/', createTask);
-router.patch('/:id', updateTask);
-router.delete('/:id', deleteTask)
+router
+  .route("/")
+  .get(getAllTasks)
+  .post(validateBody(createTaskValidationSchema), createTask);
 
-module.exports = { tasksRouter: router }
+router
+  .route("/:id")
+  .get(getOneTask)
+  .patch(validateBody(updateTaskValidationSchema), updateTask)
+  .delete(deleteTask);
+
+module.exports = { tasksRouter: router };
