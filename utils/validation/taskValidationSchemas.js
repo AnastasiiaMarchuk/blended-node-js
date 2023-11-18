@@ -5,11 +5,9 @@ const createTaskValidationSchema = Joi.object({
   completed: Joi.boolean().required(),
 });
 
-const updateTaskValidationSchema = Joi.object()
-  .keys({
-    title: createTaskValidationSchema.extract("title").optional(),
-    completed: createTaskValidationSchema.extract("completed").optional(),
-  })
-  .or("title", "completed");
+const updateTaskValidationSchema = Joi.object({
+  title: Joi.string().min(2).max(30),
+  completed: Joi.boolean(),
+}).or("title", "completed");
 
 module.exports = { createTaskValidationSchema, updateTaskValidationSchema };
